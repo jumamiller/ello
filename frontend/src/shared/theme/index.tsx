@@ -13,6 +13,14 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
             shape: {
                 borderRadius: 8,
             },
+            typography: {
+                body1: {
+                    color: palette.common.black,
+                },
+                body2: {
+                    color: palette.common.black,
+                },
+            }
         }),
         []
     );
