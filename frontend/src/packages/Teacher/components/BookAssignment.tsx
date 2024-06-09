@@ -8,14 +8,6 @@ const CARD_WIDTH = 250;
 
 export default function BookAssignment() {
     const {books,loading,error} = useSelector(state => state.TeacherLandingReducer);
-    console.log(books);
-    // if (loading) {
-    //     return <div>Loading...</div>
-    // }
-    // if (error) {
-    //     return <div>Error: {error}</div>
-    // }
-    // console.log(books);
 
     const navigate = useNavigate();
 
