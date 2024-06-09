@@ -1,6 +1,5 @@
 import {BookCard} from "../../../shared/components/card/BookCard.tsx";
 import {Grid, IconButton, InputAdornment, Paper, TextField} from "@mui/material";
-import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import Box from "@mui/material/Box";
 import {useState, useEffect} from "react";
@@ -11,23 +10,30 @@ const CARD_WIDTH = '100%';
 
 export default function BookAssignment() {
     const {books, loading, error} = useSelector(state => state.TeacherLandingReducer);
-    const navigate = useNavigate();
     const [searchInput, setSearchInput] = useState('');
     const [filteredBooks, setFilteredBooks] = useState([]);
+    const readingList = JSON.parse(localStorage.getItem('books')) || [];
 
     useEffect(() => {
+        //remove the books that are already in the reading list
+        const filtered = books.filter(book => !readingList.some(b => b.title === book.title));
         if (searchInput == null) {
-            setFilteredBooks(books);
+            setFilteredBooks(filtered);
         } else {
-            const filtered = books.filter(book =>
+            const newList = filtered.filter(book =>
                 book.title.toLowerCase().includes(searchInput.toLowerCase())
             );
-            setFilteredBooks(filtered);
+            setFilteredBooks(newList);
         }
     }, [books, searchInput]);
 
-    const handleCardClick = (url) => {
-        navigate(`/dashboard/${url}`);
+    const addToReadingList = (book) => {
+        console.log(readingList);
+        const newReadingList = [...readingList, book];
+        console.log(newReadingList);
+
+        localStorage.setItem('books', JSON.stringify(newReadingList));
+        setFilteredBooks(filteredBooks.filter(b => b.title !== book.title));
     };
 
     return (
@@ -37,6 +43,7 @@ export default function BookAssignment() {
                 margin: 3
             }}
         >
+            {loading? <p>Loading...</p> : null}
             <div style={{display: "flex", justifyContent: "center"}}>
                 <Box
                     sx={{
@@ -73,7 +80,7 @@ export default function BookAssignment() {
                             readingLevel={book.readingLevel}
                             height={CARD_HEIGHT}
                             width={CARD_WIDTH}
-                            onClick={() => handleCardClick(book.url)}
+                            onClick={() => addToReadingList(book)}
                         />
                     </Grid>
                 ))}

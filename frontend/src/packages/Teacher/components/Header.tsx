@@ -3,7 +3,7 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Logo from '../../../assets/logoEllo.svg';
-import {IconButton, Typography} from "@mui/material";
+import {IconButton} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 
