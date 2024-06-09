@@ -1,5 +1,8 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root #root {
+  font-family: "Mulish", sans-serif;
+  font-optical-sizing: auto;
   line-height: 1.5;
   font-weight: 400;
 

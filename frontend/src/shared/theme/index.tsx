@@ -10,12 +10,15 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
     const themeOptions = useMemo(
         () => ({
             palette,
+            shape: {
+                borderRadius: 10,
+            },
             typography: {
                 body1: {
-                    color: palette.common.black,
+                    color: palette.primary.dark,
                 },
                 body2: {
-                    color: palette.common.black,
+                    color: palette.primary.dark,
                 },
             }
         }),

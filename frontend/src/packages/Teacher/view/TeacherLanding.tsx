@@ -1,7 +1,10 @@
+import Header from "../components/Header.tsx";
+import {Stack} from "@mui/material";
+
 export default function TeacherLanding(){
 return (
-        <div>
-            <h1>Teacher Landing Page</h1>
-        </div>
+        <Stack>
+            <Header/>
+        </Stack>
     )
 }
