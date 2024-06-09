@@ -8,6 +8,7 @@ import ThemeProvider from "./shared/theme";
 import {ApolloClient, ApolloProvider, from, HttpLink, InMemoryCache} from "@apollo/client";
 import {BASE_API_URL} from "./core/environment";
 import 'react-toastify/dist/ReactToastify.css';
+import './App.css'
 
 const URL= `${BASE_API_URL}graphql`;
 const httpLink = new HttpLink({ uri:URL});
