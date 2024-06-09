@@ -4,9 +4,14 @@ import {useSelector} from "react-redux";
 import Box from "@mui/material/Box";
 import {useState, useEffect} from "react";
 import SearchIcon from "@mui/icons-material/Search";
+import PlaylistAddCircleIcon from '@mui/icons-material/PlaylistAddCircle';
+import {toast, ToastContainer} from "react-toastify";
 
 const CARD_HEIGHT = 200;
 const CARD_WIDTH = '100%';
+const notify = (msg) => {
+   toast.success(msg)
+}
 
 export default function BookAssignment() {
     const {books, loading, error} = useSelector(state => state.TeacherLandingReducer);
@@ -28,12 +33,10 @@ export default function BookAssignment() {
     }, [books, searchInput]);
 
     const addToReadingList = (book) => {
-        console.log(readingList);
         const newReadingList = [...readingList, book];
-        console.log(newReadingList);
-
         localStorage.setItem('books', JSON.stringify(newReadingList));
         setFilteredBooks(filteredBooks.filter(b => b.title !== book.title));
+        notify(`${book.title} added to reading list`);
     };
 
     return (
@@ -43,6 +46,7 @@ export default function BookAssignment() {
                 margin: 3
             }}
         >
+            <ToastContainer />
             {loading? <p>Loading...</p> : null}
             <div style={{display: "flex", justifyContent: "center"}}>
                 <Box
@@ -80,6 +84,8 @@ export default function BookAssignment() {
                             readingLevel={book.readingLevel}
                             height={CARD_HEIGHT}
                             width={CARD_WIDTH}
+                            buttonIcon={<PlaylistAddCircleIcon/>}
+                            buttonText="Add"
                             onClick={() => addToReadingList(book)}
                         />
                     </Grid>

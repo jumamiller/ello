@@ -3,11 +3,10 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import PlaylistAddCircleIcon from '@mui/icons-material/PlaylistAddCircle';
 import {IconButton} from "@mui/material";
 
-const BookCard = ({ author, coverPhotoURL, readingLevel,title, onClick,height, width }) => (
-    <Card sx={{ width:'100%' }}>
+const BookCard = ({ author, coverPhotoURL, readingLevel,title, onClick,height, width,buttonIcon,buttonText }) => (
+    <Card sx={{ width:'100%',boxShadow:0 }}>
         <CardMedia
             sx={{ width,height }}
             image={`/src/${coverPhotoURL}`}
@@ -26,7 +25,7 @@ const BookCard = ({ author, coverPhotoURL, readingLevel,title, onClick,height, w
         </CardContent>
         <CardActions>
             <IconButton sx={{color:'primary.dark'}} title="Add to reading list" size="small" onClick={onClick}>
-                <PlaylistAddCircleIcon/> ADD
+                {buttonIcon} {buttonText}
             </IconButton>
         </CardActions>
     </Card>
