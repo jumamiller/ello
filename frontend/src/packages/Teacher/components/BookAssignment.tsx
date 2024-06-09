@@ -3,8 +3,8 @@ import {Grid, Paper, useMediaQuery, useTheme} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 
-const CARD_HEIGHT = 180;
-const CARD_WIDTH = 250;
+const CARD_HEIGHT = 100;
+const CARD_WIDTH = 100;
 
 export default function BookAssignment() {
     const {books,loading,error} = useSelector(state => state.TeacherLandingReducer);
@@ -27,21 +27,19 @@ export default function BookAssignment() {
             }}
         >
             <Grid container spacing={2} sx={{ height: '100%' }}>
-                <Grid item xs={12} md={isZoomedIn ? 8 : 12} lg={isZoomedIn ? 8 : 12}
-                      sx={{ backgroundColor: 'secondary.lighter' }}>
-                    <Grid container spacing={isSmallScreen ? 2 : 3}>
-                        {books.map((book, index) => (
-                            <Grid item xs={12} sm={6} md={4} key={index}>
-                                <BookCard
-                                    name={book.name}
-                                    height={CARD_HEIGHT}
-                                    width={CARD_WIDTH}
-                                    onClick={() => handleCardClick(book.url)}
-                                />
-                            </Grid>
-                        ))}
+                {books.map((book, index) => (
+                    <Grid item xs={12} sm={6} md={3} lg={3} key={index}>
+                        <BookCard
+                            coverPhotoURL={book.coverPhotoURL}
+                            title={book.title}
+                            author={book.author}
+                            readingLevel={book.readingLevel}
+                            height={CARD_HEIGHT}
+                            width={CARD_WIDTH}
+                            onClick={() => handleCardClick(book.url)}
+                        />
                     </Grid>
-                </Grid>
+                ))}
             </Grid>
         </Paper>
     )

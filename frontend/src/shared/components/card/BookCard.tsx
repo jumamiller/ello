@@ -5,20 +5,19 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-const BookCard = ({ icon, image, name, onClick,height, width }) => (
-    <Card sx={{ maxWidth: 345 }}>
+const BookCard = ({ author, coverPhotoURL, readingLevel,title, onClick,height, width }) => (
+    <Card sx={{ width: '100%' }}>
         <CardMedia
             sx={{ height,width }}
-            image={image}
-            title={name}
+            image={`/src/${coverPhotoURL}`}
+            title={title}
         />
         <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-                Lizard
+                {author}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
+                {readingLevel}
             </Typography>
         </CardContent>
         <CardActions>
