@@ -2,32 +2,29 @@ import {TEACHER_API_FAILED, TEACHER_API_REQUEST, TEACHER_API_SUCCESS} from "./Te
 
 const initialState={
     loading: false,
-    submitting: false,
+    books: [],
     error: {},
 }
 
 const TeacherLandingReducer = (state = initialState, action) => {
-    switch (action.type) {
+    const { type, payload, loading} = action;
+    switch (type) {
         case TEACHER_API_REQUEST:
             return {
                 ...state,
-                loading: true,
+                loading: loading,
                 submitting: true,
                 error: {},
             };
         case TEACHER_API_SUCCESS:
             return {
-                ...state,
-                loading: false,
-                submitting: false,
-                error: {},
+                books: payload,
+                loading,
             };
         case TEACHER_API_FAILED:
             return {
-                ...state,
-                loading: false,
-                submitting: false,
-                error: action.payload,
+                loading,
+                error: payload,
             };
         default:
             return state;
