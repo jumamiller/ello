@@ -6,6 +6,8 @@ const initialState={
     error: {},
 }
 
+//this state is set via the useGetBooks hook
+
 const TeacherLandingReducer = (state = initialState, action) => {
     const { type, payload, loading} = action;
     switch (type) {

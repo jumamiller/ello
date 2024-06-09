@@ -6,6 +6,7 @@ import Logo from '../../../assets/logoEllo.svg';
 import {IconButton} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import AppsIcon from '@mui/icons-material/Apps';
 
 export default function Header() {
     const navigate = useNavigate();
@@ -21,6 +22,14 @@ export default function Header() {
                     </Box>
                     <Box>
                        <IconButton
+                           sx={{color:'primary.dark'}}
+                           size="small"
+                            onClick={()=>handleRedirect('/')}
+                            >
+                            <AppsIcon fontSize="small"/>
+                           Home
+                       </IconButton>
+                        <IconButton
                            sx={{color:'primary.dark'}}
                            size="small"
                             onClick={()=>handleRedirect('/reading-list')}

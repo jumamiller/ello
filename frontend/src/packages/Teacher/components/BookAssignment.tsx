@@ -14,6 +14,7 @@ const notify = (msg) => {
 }
 
 export default function BookAssignment() {
+    //useGetBooks hook has been called in TeacherLanding.tsx(parent) so we can access the books from the store here
     const {books, loading, error} = useSelector(state => state.TeacherLandingReducer);
     const [searchInput, setSearchInput] = useState('');
     const [filteredBooks, setFilteredBooks] = useState([]);
